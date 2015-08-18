@@ -26,6 +26,11 @@
     "through2": "^0.6.5"
   },
   "devDependencies": {
-    "mocha": "*"
+    "asset": "^0.4.13",
+    "event-stream": "^3.3.1",
+    "gulp": "^3.9.0",
+    "gulp-util": "^3.0.6",
+    "mocha": "*",
+    "vinyl": "^0.5.1"
   }
 }
