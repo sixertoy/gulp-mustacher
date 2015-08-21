@@ -17,6 +17,7 @@
         gulp = require('gulp'),
         path = require('path'),
         bump = require('gulp-bump'),
+        jshint = require('gulp-jshint'),
         mustacher = require('./index');
 
     gulp.task('bump', function () {

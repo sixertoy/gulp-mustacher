@@ -42,6 +42,9 @@
     "asset": "^0.4.13",
     "event-stream": "^3.3.1",
     "gulp": "^3.9.0",
+    "gulp-bump": "^0.3.1",
+    "gulp-jshint": "^1.11.2",
+    "jshint-stylish": "^2.0.1",
     "mocha": "*",
     "vinyl": "^0.5.1"
   }
