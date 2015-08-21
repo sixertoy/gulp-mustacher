@@ -1,1 +1,10 @@
+build
 node_modules
+src
+.editorconfig
+.gitattributes
+.gitignore
+.jshtinrc
+.travis.yml
+gulpfile.js
+test.js

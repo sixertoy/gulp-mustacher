@@ -1,10 +1,13 @@
 /*jslint indent: 4 */
-/*globals require, module, Buffer */
+/*globals require, module, Buffer, process */
 (function () {
 
     'use strict';
 
-    var gutil = require('gulp-util'),
+    var // requires
+        path = require('path'),
+        chalk = require('chalk'),
+        gutil = require('gulp-util'),
         through = require('through2'),
         mustacher = require('mustacher');
 
@@ -14,25 +17,28 @@
             throw new gutil.PluginError('gulp-mustacher', '`foo` required');
         }
         */
-        /*
-        return through.obj(function (file, enc, cb) {
-            if (file.isNull()) {
-                cb(null, file);
+        return through.obj(function (vinyl, enc, cb) {
+            var output, str, context;
+            if (vinyl.isNull()) {
+                cb(null, vinyl);
                 return;
             }
-            if (file.isStream()) {
+            if (vinyl.isStream()) {
                 cb(new gutil.PluginError('gulp-mustacher', 'Streaming not supported'));
                 return;
             }
             try {
-                file.contents = new Buffer(someModule(file.contents.toString(), options));
-                this.push(file);
+                str = vinyl.contents.toString();
+                output = mustacher(str, context);
+                vinyl.contents = new Buffer(output, options);
+                process.stdout.write(chalk.gray('write: ' + path.normalize(vinyl.path)));
+                this.push(vinyl);
             } catch (err) {
                 this.emit('error', new gutil.PluginError('gulp-mustacher', err));
             }
-            cb();
+            return through.obj(function (file, enc, cb) {
+                cb();
+            });
         });
-        */
     };
 }());
-

@@ -16,7 +16,14 @@
         // requires
         gulp = require('gulp'),
         path = require('path'),
-        mustacher = require('gulp-mustacher');
+        bump = require('gulp-bump'),
+        mustacher = require('./index');
+
+    gulp.task('bump', function () {
+        gulp.src('./package.json')
+            .pipe(bump())
+            .pipe(gulp.dest('./'));
+    });
 
     gulp.task('default', function () {
         gulp.src(path.join(src, '*.tpl'))

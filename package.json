@@ -1,7 +1,7 @@
 {
   "name": "gulp-mustacher",
-  "version": "0.0.0",
-  "description": "My marvelous gulp plugin",
+  "version": "0.1.0",
+  "description": "Provide an easy way to include handlebars (mustache) partials files inside HTML template page with a few helpers list like repeat, or, and...",
   "license": "MIT",
   "repository": "sixertoy/gulp-mustacher",
   "author": {
@@ -16,20 +16,32 @@
     "test": "mocha"
   },
   "files": [
-    "index.js"
+    "index.js",
+    "LICENSE-MIT"
   ],
   "keywords": [
-    "gulpplugin"
+    "mustacher",
+    "template",
+    "repeat",
+    "include",
+    "timestamp",
+    "dummy",
+    "image",
+    "conditions",
+    "or",
+    "and",
+    "handlebars"
   ],
   "dependencies": {
+    "chalk": "^1.1.1",
     "gulp-util": "^3.0.4",
+    "mustacher": "^0.1.1",
     "through2": "^0.6.5"
   },
   "devDependencies": {
     "asset": "^0.4.13",
     "event-stream": "^3.3.1",
     "gulp": "^3.9.0",
-    "gulp-util": "^3.0.6",
     "mocha": "*",
     "vinyl": "^0.5.1"
   }
