@@ -18,7 +18,7 @@
         }
         */
         return through.obj(function (vinyl, enc, cb) {
-            var output, str, context;
+            var compiled;
             if (vinyl.isNull()) {
                 cb(null, vinyl);
                 return;
@@ -28,17 +28,21 @@
                 return;
             }
             try {
-                str = vinyl.contents.toString();
-                output = mustacher(str, context);
-                vinyl.contents = new Buffer(output, options);
-                process.stdout.write(chalk.gray('write: ' + path.normalize(vinyl.path)));
+                // replace tpl extension
+                vinyl.path = gutil.replaceExtension(vinyl.path, '.html');
+                // compile content
+                compiled = mustacher(vinyl.contents.toString(), {});
+                // write vinyl
+                vinyl.contents = new Buffer(compiled, options);
                 this.push(vinyl);
+                // log & return
+                process.stdout.write(chalk.gray('write: ' + path.normalize(vinyl.path)) + '\n');
+                cb(null, vinyl);
+                
             } catch (err) {
                 this.emit('error', new gutil.PluginError('gulp-mustacher', err));
             }
-            return through.obj(function (file, enc, cb) {
-                cb();
-            });
+
         });
     };
 }());
