@@ -1,7 +1,7 @@
 {
   "name": "gulp-mustacher",
-  "version": "0.1.0",
-  "description": "Provide an easy way to include handlebars (mustache) partials files inside HTML template page with a few helpers list like repeat, or, and...",
+  "version": "0.1.5",
+  "description": "Build HTML static pages. Perfect for templating eZPublish, Magento, Drupal... CMS models",
   "license": "MIT",
   "repository": "sixertoy/gulp-mustacher",
   "author": {
@@ -13,7 +13,8 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "mocha"
+    "pretest": "gulp",
+    "test": "istanbul test -x *.spec.js node_modules/mocha/bin/_mocha --report lcovonly -- -R spec ./spec/tasks/*.spec.js"
   },
   "files": [
     "index.js",
@@ -35,17 +36,21 @@
   "dependencies": {
     "chalk": "^1.1.1",
     "gulp-util": "^3.0.4",
-    "mustacher": "^0.1.1",
+    "lodash.merge": "^3.3.2",
+    "mustacher": "*",
     "through2": "^0.6.5"
   },
   "devDependencies": {
     "asset": "^0.4.13",
+    "chai": "^3.2.0",
     "event-stream": "^3.3.1",
+    "grunt": "^0.4.5",
     "gulp": "^3.9.0",
     "gulp-bump": "^0.3.1",
     "gulp-jshint": "^1.11.2",
     "jshint-stylish": "^2.0.1",
     "mocha": "*",
+    "sinon": "^1.16.1",
     "vinyl": "^0.5.1"
   }
 }
