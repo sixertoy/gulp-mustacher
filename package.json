@@ -1,6 +1,6 @@
 {
   "name": "gulp-mustacher",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Build HTML static pages. Perfect for templating eZPublish, Magento, Drupal... CMS models",
   "license": "MIT",
   "repository": "sixertoy/gulp-mustacher",
@@ -17,6 +17,7 @@
     "test": "istanbul test -x *.spec.js node_modules/mocha/bin/_mocha --report lcovonly -- -R spec ./spec/tasks/*.spec.js"
   },
   "files": [
+    "tasks/",
     "index.js",
     "LICENSE-MIT"
   ],
