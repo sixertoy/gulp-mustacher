@@ -1,5 +1,5 @@
 <a name="description"></a>
-# gulp-mustacher 
+# gulp-mustacher
 
 [![MIT License][license-img]][license-url] [![NPM version][npm-version-img]][npm-url] [![NPM downloads][npm-downloads-img]][npm-url] [![Build Status][travis-img]][travis-url] [![Coverage Status][coverall-img]][coverall-url]
 
@@ -44,7 +44,7 @@ npm install gulp-mustacher --save-dev
 <a name="usage"></a>
 ## Usage
 
-```js
+```javascript
 var gulp = require('gulp'),
     path = require('path'),
     mustacher = require('gulp-mustacher');
@@ -54,6 +54,54 @@ gulp.task('default', function () {
         .pipe(mustacher())
         .pipe(gulp.dest('build/html'));
 });
+```
+
+### Usage, build a markdown toc
+
+```javascript
+gulp.task('build:hbs', function () {
+var options = {
+        context: {
+            pages: filenames.get('markdown')
+        }
+    },
+    sources = path.join(src, 'assets', '*.hbs');
+return gulp.src(sources)
+    .pipe(mustacher(options))
+    .pipe(gulp.dest(path.join(build_directory)));
+});
+
+gulp.task('build:toc', function () {
+    var sources = path.join(src, 'readme', 'pages', '*.md');
+    return gulp.src(sources)
+        .pipe(filenames('markdown'));
+});
+
+gulp.task('build', function (cb) {
+    runSequence('build:toc', 'build:hbs', cb);
+});
+```
+
+> In _footer.hbs
+
+```html
+    <!-- endof content -->
+    </article>
+
+    <nav>
+        <!-- table of content -->
+        {{#each pages}}
+        <a href="pages/{{this}}"><span>{{this}}</span></a>
+        {{/each}}
+    </nav>
+
+    <div class="after-body">
+    <!-- scripts -->
+    </div>
+
+</body>
+
+</html>
 ```
 
 <a name="issues"></a>
