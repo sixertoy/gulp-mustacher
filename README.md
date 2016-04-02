@@ -82,7 +82,7 @@ gulp.task('build', function (cb) {
 });
 ```
 
-> In _footer.hbs
+> In src/assets/_footer.hbs
 
 ```html
     <!-- endof content -->
