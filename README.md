@@ -12,7 +12,14 @@
 <a name="exposed-helpers"></a>
 ### Exposed HTML/Handlebar's helpers
 
-###### inline
+###### blocks helpers
+
+* [repeat](https://github.com/sixertoy/mustacher#repeat)
+* [and](https://github.com/sixertoy/mustacher#and)
+* [or](https://github.com/sixertoy/mustacher#or)
+* [equal](https://github.com/sixertoy/mustacher#equal)
+
+###### inline helpers
 
 * [$include](https://github.com/sixertoy/mustacher#include)
 * [$image](https://github.com/sixertoy/mustacher#image)
@@ -21,18 +28,6 @@
 * [$random](https://github.com/sixertoy/mustacher#random)
 * [$ldim](https://github.com/sixertoy/mustacher#literals)
 * [$rdim](https://github.com/sixertoy/mustacher#literals)
-
-###### blocks
-
-* [repeat](https://github.com/sixertoy/mustacher#repeat)
-* [and](https://github.com/sixertoy/mustacher#and)
-* [or](https://github.com/sixertoy/mustacher#or)
-* [equal](https://github.com/sixertoy/mustacher#equal)
-
-<a name="documentation"></a>
-## Documentation & examples
-
-> [Take a look at mustacher module for a full documentation](https://www.npmjs.com/package/mustacher)
 
 <a name="install"></a>
 ## Install
@@ -44,65 +39,71 @@ npm install gulp-mustacher --save-dev
 <a name="usage"></a>
 ## Usage
 
+`gulpfile.js`
 ```javascript
 var gulp = require('gulp'),
     path = require('path'),
     mustacher = require('gulp-mustacher');
 
 gulp.task('default', function () {
+    var options = {
+        partials: {
+            ext: '.hbs',
+            src: 'src/html/partials'
+        }
+    };
     return gulp.src(path.join('src', '*.tpl'))
-        .pipe(mustacher())
+        .pipe(mustacher(options))
         .pipe(gulp.dest('build/html'));
 });
 ```
 
-### Usage, build a markdown toc
-
-```javascript
-gulp.task('build:hbs', function () {
-var options = {
-        context: {
-            pages: filenames.get('markdown')
-        }
-    },
-    sources = path.join(src, 'assets', '*.hbs');
-return gulp.src(sources)
-    .pipe(mustacher(options))
-    .pipe(gulp.dest(path.join(build_directory)));
-});
-
-gulp.task('build:toc', function () {
-    var sources = path.join(src, 'readme', 'pages', '*.md');
-    return gulp.src(sources)
-        .pipe(filenames('markdown'));
-});
-
-gulp.task('build', function (cb) {
-    runSequence('build:toc', 'build:hbs', cb);
-});
-```
-
-> In src/assets/_footer.hbs
-
+`src/html/index.tpl`
 ```html
-    <!-- endof content -->
-    </article>
+<!DOCTYPE html>
+<html lang="fr">
 
-    <nav>
-        <!-- table of content -->
-        {{#each pages}}
-        <a href="pages/{{this}}"><span>{{this}}</span></a>
-        {{/each}}
-    </nav>
+<head>
+    ....
+    <!-- include dist/css/bundle.css in a <link href="... -->
+    {{$css 'css/bundle'}}
+    <!--
+    or include inline styles from a file
+    {{$css 'dist/public/css/bundle' true}}
+    -->
+</head>
 
-    <div class="after-body">
-    <!-- scripts -->
+<body>
+
+    <div id="before-body">
+        ...
+    </div>
+
+    <!-- include src/html/partials/header.hbs -->
+    {{$include 'header'}}
+
+    <div id="main">
+        <!-- include src/html/partials/contents/main.hbs -->
+        {{$include 'contents/main'}}
+    </div>
+
+    <!-- include src/html/partials/footer.hbs -->
+    {{$include 'footer'}}
+
+    <div id="after-body">
+        ...
     </div>
 
 </body>
 
 </html>
+    
 ```
+
+<a name="documentation"></a>
+## More Documentation & Examples
+
+> [Take a look at mustacher module for a full documentation](https://www.npmjs.com/package/mustacher)
 
 <a name="issues"></a>
 ## Issues
