@@ -12,6 +12,7 @@
         merge = require('lodash.merge'),
         mustacher = require('mustacher'),
         _defaults = {
+            image: false,
             cwd: process.cwd(),
             delimiter: {
                 ldim: '{{',
@@ -46,6 +47,7 @@
                 // compile content
                 compiled = mustacher(vinyl.contents.toString(), options.context, {
                     cwd: options.cwd,
+                    image: options.image,
                     partials: options.partials,
                     delimiter: options.delimiter,
                 });
