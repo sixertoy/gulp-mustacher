@@ -37,23 +37,23 @@
     "handlebars"
   ],
   "dependencies": {
-    "chalk": "^1.1.1",
-    "gulp-util": "^3.0.4",
-    "lodash.merge": "^3.3.2",
-    "mustacher": "^0.1.16",
-    "through2": "^0.6.5"
+    "chalk": "1.1.1",
+    "gulp-util": "3.0.4",
+    "lodash.merge": "3.3.2",
+    "mustacher": "0.1.19",
+    "through2": "0.6.5"
   },
   "devDependencies": {
-    "asset": "^0.4.13",
-    "chai": "^3.2.0",
-    "event-stream": "^3.3.1",
-    "grunt": "^0.4.5",
-    "gulp": "^3.9.0",
-    "gulp-bump": "^0.3.1",
-    "gulp-jshint": "^1.11.2",
-    "jshint-stylish": "^2.0.1",
+    "asset": "0.4.13",
+    "chai": "3.2.0",
+    "event-stream": "3.3.1",
+    "grunt": "0.4.5",
+    "gulp": "3.9.0",
+    "gulp-bump": "0.3.1",
+    "gulp-jshint": "1.11.2",
+    "jshint-stylish": "2.0.1",
     "mocha": "*",
-    "sinon": "^1.16.1",
-    "vinyl": "^0.5.1"
+    "sinon": "1.16.1",
+    "vinyl": "0.5.1"
   }
 }
