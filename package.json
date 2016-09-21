@@ -1,6 +1,6 @@
 {
   "name": "gulp-mustacher",
-  "version": "0.1.15",
+  "version": "0.1.16",
   "description": "Build HTML static pages. Perfect for templating eZPublish, Magento, Drupal... CMS models",
   "license": "MIT",
   "repository": "sixertoy/gulp-mustacher",
